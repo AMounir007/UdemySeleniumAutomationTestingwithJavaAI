@@ -1,3 +1,5 @@
+package practice;
+
 import abstractHelperClasses.TestCase;
 import org.testng.annotations.Test;
 
