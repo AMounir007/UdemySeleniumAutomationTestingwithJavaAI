@@ -6,17 +6,24 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.util.Properties;
+
+import static abstractHelperClasses.PropertiesLoader.getProperty;
+
+
 public abstract class TestCase {
     public WebDriver driver;
+    public Properties properties ;
 
     @BeforeMethod
     public void setUp() {
         driver = new ChromeDriver(getChromeOptions());
-    }
+        properties = getProperty();
+        }
     @AfterMethod
     public void tearDown() {
         if (driver != null) {
-          //  driver.quit();
+            driver.quit();
         }
     }
 
@@ -36,5 +43,4 @@ public abstract class TestCase {
         options.setAcceptInsecureCerts(true);
         return options;
     }
-
 }
